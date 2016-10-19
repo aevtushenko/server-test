@@ -1,6 +1,10 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -38,7 +42,6 @@ public final class DataManager {
 		  return uniqueProjects;
 	   }
 
-	   
 	   public static ArrayList<Map.Entry<?, Double>> getRelevanceTable(Hashtable<String, ProjectObject> uniqueProjects) {
 		   Hashtable<String,Double> relevanceTable = new Hashtable<>();
 		      
@@ -47,6 +50,17 @@ public final class DataManager {
 		    	  relevanceTable.put(proj, relevance);
 		      }
 		      return sortValue(relevanceTable);
+	   }
+	   
+	   public int getSinceLastFromLastDate(String lastDate) throws ParseException  {
+		   	try { SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+		    Date then = (Date) format.parse(lastDate);
+		    Date now = Calendar.getInstance().getTime();
+		    int seconds = (int) (now.getTime()-then.getTime())/1000;
+		    return seconds; }
+		   	catch (ParseException pe) {
+		   		throw pe;
+		   	}
 	   }
 	
 }

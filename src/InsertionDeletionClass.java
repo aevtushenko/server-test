@@ -6,8 +6,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-public class InsertionDeletionClass {
+/**
+ * 
+ * @author Anna
+ *
+ */
+public final class InsertionDeletionClass {
 	public InsertionDeletionClass(){
 		
 	}
@@ -51,7 +55,7 @@ public class InsertionDeletionClass {
 		   try {
 		   Statement stmt = null;
 		   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-		   String laterTimeStamp = format.format(Calendar.getInstance().getTime());
+		   //String laterTimeStamp = format.format(Calendar.getInstance().getTime());
 		   Calendar cal = Calendar.getInstance();
 		   cal.add(Calendar.DATE, -7);
 		   String earlierTimeStamp = format.format(cal.getTime());
